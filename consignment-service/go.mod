@@ -1,8 +1,8 @@
-module github.com/lukeecrane/shippy-shippy-consignment
+module github.com/lukeecrane/shippy-service-consignment
 
 require (
 	cloud.google.com/go v0.37.4 // indirect
-	github.com/golang/protobuf v1.3.1 // indirect
+	github.com/golang/protobuf v1.3.1
 	github.com/google/btree v1.0.0 // indirect
 	github.com/google/go-cmp v0.3.0 // indirect
 	github.com/google/pprof v0.0.0-20190404155422-f8f10df84213 // indirect
