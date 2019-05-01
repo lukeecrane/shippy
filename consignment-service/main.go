@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	// Import the generated protobuf code
-	pb "github.com/lukeecrane/shippy-service-consignment/proto/consignment"
+	pb "github.com/lukeecrane/shippy/service-consignment/proto/consignment"
 	"golang.org/x/net/context"
 	micro "github.com/micro/go-micro"
 )
