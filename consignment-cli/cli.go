@@ -23,7 +23,7 @@ func parseFile(file string) (*pb.Consignment, error) {
 	if err != nil {
 		return nil, err
 	}
-	json.Unmarshal(data, &consignment)
+	json.Unmarshal(data, &consignment)  //weird the data is in JSON format and needs to be converted to go objects
 	return consignment, err
 }
 
@@ -34,7 +34,7 @@ func main() {
 		log.Fatalf("Did not connect: %v", err)
 	}
 	defer conn.Close()
-	client := pb.NewShippingServiceClient(conn)
+	client := pb.NewShippingServiceClient(conn)  //Generate function from make build protoc
 
 	// Contact the server and print out its response.
 	file := defaultFilename
@@ -42,13 +42,13 @@ func main() {
 		file = os.Args[1]
 	}
 
-	consignment, err := parseFile(file)
+	consignment, err := parseFile(file)  //Read the incoming response
 
 	if err != nil {
 		log.Fatalf("Could not parse file: %v", err)
 	}
 
-	r, err := client.CreateConsignment(context.Background(), consignment)
+	r, err := client.CreateConsignment(context.Background(), consignment)  //Context is a object that holds extra data concerning a request
 	if err != nil {
 		log.Fatalf("Could not greet: %v", err)
 	}
