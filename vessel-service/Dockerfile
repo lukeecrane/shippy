@@ -3,13 +3,13 @@ FROM golang:alpine as builder
 # Build golang 'dep'
 RUN apk update && apk add --no-cache git
 
-WORKDIR $GOPATH/src/go_microservice/consignment-service
+WORKDIR $GOPATH/src/go_microservice/vessel-service
 
 COPY . .
 
 RUN go get -u github.com/golang/dep/cmd/dep
 RUN go get -u github.com/micro/go-micro
-RUN go get -u github.com/lukeecrane/shippy/consignment-service/proto/consignment
+RUN go get -u github.com/lukeecrane/shippy/consignment-vessel/proto/vessel
 
 
 # Using go get.
@@ -35,9 +35,9 @@ WORKDIR /app
 # we pull the binary from the container named `builder`, within
 # this build context. This reaches into our previous image, finds
 # the binary we built, and pulls it into this container. Amazing!
-COPY --from=builder $GOPATH/src/go_microservice/consignment-service .
+COPY --from=builder $GOPATH/src/go_microservice/vessel-service .
 
 # Use an unprivileged user.
 USER appuser
 
-CMD ["./consignment-service"]
+CMD ["./vessel-service"]
